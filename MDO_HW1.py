@@ -36,7 +36,7 @@ def main():
             A[i, i+1] = lam/(2*dx) - mu/pow(dx,2)
         elif i == 0:
             A[i,i] = 1
-        else 
+        else: 
             A[i,8] = 1
             A[i,9] = -2
 
