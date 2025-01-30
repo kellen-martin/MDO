@@ -56,7 +56,7 @@ def main():
     plt.plot(x, T, label = "Time%f" % t)
     plt.xlabel('x (postion)')
     plt.ylabel('T (Temperature')
-    plt.title('Solution at t = 1')
+    plt.title('Solution at t = 2')
     plt.xlim([0, L])
     plt.ylim([0, 5])
     plt.show()
