@@ -28,5 +28,6 @@ def main():
     plt.plot(x, U[-1,:], label = 'Solution at tf = 0.1')
     plt.xlabel('x (postion)')
     plt.ylabel('U (velocity)')
+    plt.title('Solution at t = 0.1')
     plt.show()
 main()
