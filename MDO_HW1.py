@@ -14,16 +14,18 @@ def main():
     N = int(tf/delta_t)  # Number of time steps
 
     # Discretized Domain
+    t = np.linspace(0, .2, num=N)
     x = np.linspace(0, 1, num=11)
     U = np.zeros((int(N),11))
 
     # Inital Conitions
     U[0,:] = -5*pow(x,2) + 5
     print(U)
+    
     # Solve PDE
 
-    # Plot at final time
-    plt.plot(x, U[-1,:], label = 'Solution at tf = 0.2')
+    # Plot at t = 0.1
+    plt.plot(x, U[-1,:], label = 'Solution at tf = 0.1')
     plt.xlabel('x (postion)')
     plt.ylabel('U (velocity)')
     plt.show()
