@@ -16,6 +16,7 @@ def main():
 
     # Initial Condiations 
     T = np.ones(Nx)
+    print(T)
     
     # Conctruct A Matrix
     A = np.zeros([Nx, Nx])
@@ -47,10 +48,10 @@ def main():
             else:
                 b[i] = T[i]/dt
 
-
+    print(b)
     # Solve System
     T = np.linalg.solve(A,b)
-    print(T)
+  
 
     # Plot at t
     plt.plot(x, T, label = "Time%f" % t)
