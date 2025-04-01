@@ -20,7 +20,7 @@ def GaussianKernel(x1, x2):
 
 K = GaussianKernel(xt, xt)
 Kinv = np.linalg.inv(K)
-yt = yt.reshape((5, 1))
+yt = yt.reshape((nsamples, 1))
 KinvY = np.dot(Kinv, yt)
 
 def predict_val(x):
@@ -28,5 +28,29 @@ def predict_val(x):
     y = np.dot(k.flatten(), KinvY.flatten())
     return y
 
-y = predict_val(0.3)
-print(y)
+def predict_var(x):
+    k_star = GaussianKernel([x], [x])
+    k = GaussianKernel(xt, [x])
+    kinvk = np.dot(Kinv, k)
+    sigma = -np.dot(k.flatten(), kinvk.flatten()) + k_star.flatten()
+
+    return sigma[0]
+
+
+x = np.linspace(0,1,100)
+print(x)
+y = []
+sigma = []
+for i in range(len(x)):
+    yP = predict_val(x[i])
+    y.append(yP)
+    sigmaP = predict_var(x[i])
+    sigma.append(sigmaP)
+
+sigma = np.asarray(sigma)
+
+
+plt.plot(xt, yt, "ko")
+plt.plot(x, y, "r-")
+plt.fill_between(np.ravel(x), np.ravel(y-3*np.sqrt(sigma)), np.ravel(y+3*np.sqrt(sigma)))
+plt.show()
